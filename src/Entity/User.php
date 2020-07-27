@@ -11,6 +11,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur", "CM" = "CM", "admin" = "Admin"})
  * @ApiResource(
  *   collectionOperations={
  *     "get"={"security"="is_granted('ROLE_ADMIN')"},
